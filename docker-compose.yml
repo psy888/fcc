@@ -1,0 +1,15 @@
+version: '3.3'
+  services:
+    db:
+      image: postgres:alpine
+      name: db
+      restart: always
+      port:
+        - 5432:5432
+      environment:
+        POSTGRES_PASSWORD: test
+    api:
+      build:  .
+      name: api
+      expose:
+        - 8080
