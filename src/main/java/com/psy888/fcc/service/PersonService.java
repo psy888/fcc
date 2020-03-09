@@ -3,6 +3,8 @@ package com.psy888.fcc.service;
 import com.psy888.fcc.dao.PersonDao;
 import com.psy888.fcc.model.Person;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class PersonService {
 
+    @Qualifier("postgres")
     private final PersonDao personDao;
 
     public int addPerson(Person person) {
