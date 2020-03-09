@@ -32,4 +32,9 @@ public class PersonController {
                 .orElse(null);
     }
 
+    @DeleteMapping(path = "{id}")
+    public void removePersonById(@PathVariable("id") UUID id){
+        personService.removePersonById(id);
+    }
+
 }
