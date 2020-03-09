@@ -17,24 +17,29 @@ public class PersonController {
     private final PersonService personService;
 
     @PostMapping
-    public void addPerson(@RequestBody Person person){
+    public void addPerson(@RequestBody Person person) {
         personService.addPerson(person);
     }
 
     @GetMapping
-    public List<Person> getAllPeople(){
+    public List<Person> getAllPeople() {
         return personService.getAllPeople();
     }
 
     @GetMapping(path = "{id}")
-    public Person getPersonById(@PathVariable("id") UUID id){
+    public Person getPersonById(@PathVariable("id") UUID id) {
         return personService.getPersonById(id)
                 .orElse(null);
     }
 
     @DeleteMapping(path = "{id}")
-    public void removePersonById(@PathVariable("id") UUID id){
+    public void removePersonById(@PathVariable("id") UUID id) {
         personService.removePersonById(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate){
+        personService.updatePerson(id,personToUpdate);
     }
 
 }
